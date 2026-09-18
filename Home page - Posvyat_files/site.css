@@ -55,6 +55,7 @@ body {
     font-family:Calibri;
     vertical-align: bottom;
     font-size: medium;
+    margin-bottom: 5%;
 }
 
 @media screen and (max-width: 425px) {
