@@ -1,0 +1,162 @@
+@font-face {
+    font-family: 'minecraft';
+    /* Браузер скачает этот файл автоматически при первой загрузке страницы */
+    src: url('../fonts/minecraft.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    /* Оптимизирует отображение текста, пока шрифт скачивается */
+    font-display: swap;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 0px;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: #010101;
+}
+
+.main-text {
+    color: #23EB91;
+    font-family: minecraft;
+    margin-top: 15%;
+    display: inline-block;
+    --text-scale: 1.2;
+    animation: pulseText 6s ease-in-out infinite alternate;
+}
+
+@media screen and (max-width: 425px) {
+    .main-text {
+        --text-scale: 1.01; /* Значение для мобильных */
+    }
+}
+
+.secondary-text {
+    color: #EB44D5;
+    font-family:Calibri;
+    vertical-align: bottom;
+    font-size: medium;
+}
+
+@media screen and (max-width: 425px) {
+    .secondary-text {
+        font-size: xx-small;
+    }
+}
+
+.centered_zone {
+    margin: 2% 5% 2% 5%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column; /* Элементы идут друг за другом сверху вниз */
+    min-height: 100vh; /* Растягиваем контейнер на весь экран */
+}
+
+.content {
+    flex-grow: 1; /* Этот блок займет все свободное место, оттолкнув <p> в самый низ */
+}
+
+.bottom-text {
+    margin: 0;
+    padding: 15px;
+    background-color: #f0f0f0;
+}
+
+@keyframes pulseText {
+    0% {
+        color: #23EB91;
+        transform: scale(var(--text-scale));
+        text-shadow: 0 0 20px #23EB91, 0 0 30px rgba(35, 235, 145, 0.6);
+    }
+    20% {
+        color: #218365;
+        text-shadow: 0 0 10px #218365, 0 0 20px rgba(35, 235, 145, 0.6);
+    }
+    100% {
+        text-shadow: 0 0 0px transparent;
+        color: #1f6345;
+        transform: scale(calc(var(--text-scale) - 0.05));
+    }
+}
+
+/* Чтобы страница не растягивалась от анимации */
+main {
+    overflow-x: hidden;
+}
+
+/* Базовый класс для всех битых пикселей */
+.dead-pixel {
+    position: fixed; 
+    width: 2px;
+    height: 2px;
+    z-index: 99999;
+    pointer-events: none; 
+    animation-name: pixel-glitch;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* Варианты цветов с соответствующим свечением (box-shadow) */
+.pixel-green {
+    background-color: #23EB91;
+    box-shadow: 0 0 2px #23EB91;
+}
+
+.pixel-red {
+    background-color: #EB44D5;
+    box-shadow: 0 0 2px #EB44D5;
+}
+
+.pixel-blue {
+    background-color: #0000ff;
+    box-shadow: 0 0 2px #0000ff;
+}
+
+/* Анимация хаотичного микро-мерцания */
+@keyframes pixel-glitch {
+    0% {
+        opacity: 0.2;
+    }
+
+    10% {
+        opacity: 0;
+    }
+
+    17% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+

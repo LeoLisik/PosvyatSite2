@@ -1,0 +1,36 @@
+﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+// for details on configuring this project to bundle and minify static web assets.
+
+// Write your JavaScript code.
+document.addEventListener("DOMContentLoaded", () => {
+    const pixelCount = 300; // Количество пикселей
+    const colors = ['pixel-green', 'pixel-red']; // pixel-blue
+
+    for (let i = 0; i < pixelCount; i++) {
+        const pixel = document.createElement('div');
+        pixel.classList.add('dead-pixel');
+
+        // Случайный цвет
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        pixel.classList.add(randomColor);
+
+        // Случайные координаты
+        const randomX = Math.floor(Math.random() * 100);
+        const randomY = Math.floor(Math.random() * 100);
+        pixel.style.left = `${randomX}vw`;
+        pixel.style.top = `${randomY}vh`;
+
+        // --- РАССИНХРОНИЗАЦИЯ АНИМАЦИИ ---
+        // 1. Случайная задержка старта
+        const randomDelay = (Math.random() * 10).toFixed(2);
+        pixel.style.animationDelay = `${randomDelay}s`;
+
+        // 2. Случайная скорость мигания
+        const randomDuration = (2 + Math.random() * 5).toFixed(2);
+        pixel.style.animationDuration = `${randomDuration}s`;
+        // ---------------------------------
+
+        document.body.appendChild(pixel);
+    }
+});
+
